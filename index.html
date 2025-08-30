@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Motivación para tu día</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(270deg, #89f7fe, #66a6ff, #ff9a9e, #fad0c4);
+      background-size: 800% 800%;
+      animation: fondo 12s ease infinite;
+      font-family: 'Segoe UI', sans-serif;
+      color: #fff;
+      text-align: center;
+      padding: 0 15px;
+    }
+    @keyframes fondo {
+      0% {background-position: 0% 50%;}
+      50% {background-position: 100% 50%;}
+      100% {background-position: 0% 50%;}
+    }
+    .frase {
+      font-size: 1.6rem;
+      margin-bottom: 2rem;
+      min-height: 80px;
+      font-weight: bold;
+      text-shadow: 0 0 10px rgba(0,0,0,0.4);
+      transition: opacity 0.4s ease;
+      max-width: 600px;
+    }
+    button {
+      padding: 12px 25px;
+      font-size: 1rem;
+      border: none;
+      border-radius: 30px;
+      background-color: rgba(255, 255, 255, 0.2);
+      color: white;
+      cursor: pointer;
+      backdrop-filter: blur(5px);
+      position: relative;
+      overflow: hidden;
+    }
+    button::after {
+      content: "";
+      position: absolute;
+      width: 300%;
+      height: 300%;
+      top: 50%;
+      left: 50%;
+      background: rgba(255,255,255,0.3);
+      transform: translate(-50%, -50%) scale(0);
+      border-radius: 50%;
+      transition: transform 0.5s ease;
+    }
+    button:active::after {
+      transform: translate(-50%, -50%) scale(1);
+      transition: transform 0s;
+    }
+    button:hover {
+      background-color: rgba(255, 255, 255, 0.4);
+    }
+  </style>
+</head>
+<body>
+  
+  <div class="frase" id="frase">
+    Respira… lo peor ya pasó y lo mejor está por venir.
+  </div>
+  
+  <button onclick="cambiarFrase()">🌟 Otro mensaje</button>
+
+  <script>
+    const frases = [
+      "Respira… lo peor ya pasó y lo mejor está por venir.",
+      "Eres más fuerte de lo que crees y más capaz de lo que imaginas.",
+      "Hoy puede ser el inicio de algo increíble, no te rindas.",
+      "Tu sonrisa es más poderosa que cualquier problema.",
+      "No olvides que incluso las flores crecen después de la tormenta.",
+      "Eres luz, aunque hoy no lo sientas.",
+      "Cada día es una nueva oportunidad para brillar.",
+      "No estás sola, el mundo necesita tu energía."
+    ];
+
+    const fraseEl = document.getElementById('frase');
+
+    function cambiarFrase() {
+      fraseEl.style.opacity = 0;
+      setTimeout(() => {
+        const aleatoria = frases[Math.floor(Math.random() * frases.length)];
+        fraseEl.textContent = aleatoria;
+        fraseEl.style.opacity = 1;
+      }, 300);
+    }
+  </script>
+</body>
+</html>
